@@ -1,0 +1,43 @@
+version: '3'
+services:
+  nginx:
+    build: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./suite_tooth:/var/www/html
+    networks:
+      - innodite
+  php:
+    build: php
+    volumes:
+      - ./suite_tooth:/var/www/html
+    networks:
+      - innodite
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: suite_tooth
+      MYSQL_USER: innodite
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "33060:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - innodite
+  redis:
+    image: redis:alpine
+    volumes:
+      - redisdata:/data
+    networks:
+      - innodite
+networks:
+  innodite:
+    driver: "bridge"
+volumes:
+  redisdata:
+    driver: "local"
+  mysqldata:
+    driver: "local"
