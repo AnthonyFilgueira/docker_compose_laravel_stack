@@ -7,4 +7,4 @@
 - Ejecutar `docker-compose up`
 
 
-- Ejecutar `docker exec -it suite_tooth_php_1 sh` para conectarse a la consola interactivay poder ejecutar los comandos de laravel
+- Ejecutar `docker exec -it suite_tooth_php_1 sh` para conectarse a la consola interactiva y poder ejecutar los comandos de php y npm
